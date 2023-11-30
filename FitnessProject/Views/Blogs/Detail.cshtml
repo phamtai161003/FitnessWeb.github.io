@@ -1,0 +1,56 @@
+﻿@model FitnessProject.Models.Post
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    .post-box {
+        width: 30%;
+        max-height: 1000px;
+        margin: 5% 35%;
+        position:relative;
+    }
+    .close{
+        font-family:sans-serif;
+        font-size:18px;
+        font-weight:700;
+        color:black;
+        position:absolute;
+        right:3px;
+        top:-5px;
+    }
+    .close:hover{
+        color:antiquewhite;
+        transition:all 10ms ease-in-out;
+        cursor:pointer;
+    }
+    .post-description {
+        height: auto;
+        display: block;
+        max-width: 100%;
+    }
+    section{
+        width:100%;
+        height:100%;
+        background-color:transparent;
+    }
+    footer{
+        margin-top:0;
+    }
+</style>
+    <section>
+        <div class="post-box news">
+            <a href="/Blogs/Index" class="close">X</a>
+            <img src="@Model.images" alt="" class="post-img">
+            <h2 class="category">@Model.Category.category_name</h2>
+            <a href="#" class="post-title">@Model.title</a>
+            <span class="post-date">12 Feb 2022</span>
+            <p style="" class="post-description">@Model.content</p>
+            <div class="profile">
+                <img src="@Model.Client.anh" alt="" class="profile-img">
+                <span class="profile-name">@Model.author</span>
+            </div>
+        </div>
+    </section>   
+

@@ -1,0 +1,193 @@
+﻿@model FitnessProject.Models.Client
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e58f8f;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        h6 {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        input {
+            background-color: rgba(0,0,0,0);
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .Update-profile .close-update {
+            font-size: 20px;
+            font-weight: 700;
+            color: black;
+            position: absolute;
+            right: 5px;
+            top: 4px;
+        }
+
+            .Update-profile .close-update:hover {
+                cursor: pointer;
+                color: rgb(150, 150, 124);
+                transition: all 5ms ease-in-out;
+            }
+
+        .Update-profile {
+            display: flex;
+            position: fixed;
+            z-index: 1000000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 575px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .Update-profile h6 {
+                font-size: 30px;
+                font-weight: 600;
+                margin: 10px;
+            }
+
+            .Update-profile .update-wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .Update-profile .update-group {
+                display: flex;
+                max-width: 50%;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                margin-left: -60px;
+            }
+
+                .Update-profile .update-group input {
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    height: 40px;
+                    width: 200px;
+                }
+
+            .Update-profile form button {
+                position: absolute;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 10px 20px;
+                margin-top: 10px;
+                background-color: rgb(243, 239, 235);
+                right: 42%;
+            }
+
+                .Update-profile form button:hover {
+                    background-color: rgb(229, 191, 180);
+                    transition: all 1ms ease-in-out;
+                }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateProfile</title>
+</head>
+<body>
+    <div>
+        <div class="Update-profile">
+            <div onclick="closeForm()" class="close-update">@Html.ActionLink("X", "ProFile", "Home", null, new { @class = "close-update" })</div>
+            <h6>Update Profile</h6>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="update-wrap">
+                    <div class="update-group">
+                        <ul class="update-input">
+                            <li><label for="">Name</label></li>
+                            <li><input name="Fullname" type="text" required></li>
+                        </ul>
+                        <ul class="update-input">
+                            <li><label for="">weight</label></li>
+                            <li><input type="text" name="weight" id="" required></li>
+                        </ul>
+                    </div>
+
+                    <div class="update-group">
+                        <ul class="update-input">
+                            <li><label for="">height</label></li>
+                            <li><input type="text"  name="height" id="" required></li>
+                        </ul>
+                        <ul class="update-input">
+                            <li><label for="">Email</label></li>
+                            <li><input type="text"  name="email" id="" required></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="update-wrap">
+                    <div class="update-group">
+                        <ul class="update-input">
+                            <li><label for="">Phone</label></li>
+                            <li><input type="text"  name="phone" id="" required></li>
+                        </ul>
+                        <ul class="update-input">
+                            <li><label for="">Images</label></li>
+                            <li><input style="height:22px"  type="file" name="images" id="" required></li>
+                        </ul>
+                    </div>
+
+                    <div class="update-group">
+                        <ul class="update-input" style="width: 280px;display: block;">
+                            <li style="margin-right: 8px;"><label for="">Birthday</label></li>
+                            <li><input type="date"  name="birthday" required> </li>
+                        </ul>
+                        <ul class="update-input" style="margin-left: 24px; display: block; justify-content: space-between; padding-inline-start: 0;">
+                            <li style="margin-right: 30px;"><label for="">Gender</label></li>
+                            <li style="margin-right:40px">
+                                <select id="gender" name="gender" required>
+                                    <option value="nam">Male</option>
+                                    <option value="nu">Female</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

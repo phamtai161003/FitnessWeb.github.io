@@ -1,0 +1,247 @@
+﻿
+
+@{
+    Layout = null;
+    
+    bool CheckUser = Session["checkUser"] as bool? ?? false;
+    
+}
+
+
+@model FitnessProject.ViewModels.ClientViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <title>Profile</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e58f8f;
+        }
+
+        h3 {
+            margin: 10px 0;
+        }
+
+        h6 {
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 21px;
+        }
+
+        input {
+            background-color: rgba(0,0,0,0);
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .wrap-profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            background-color: #000000;
+            box-shadow: 0px 20px 30px -10px rgba(57, 5, 5, 0.75);
+        }
+
+        .card-container {
+            font-family: sans-serif;
+            background-color: #ca8e8e;
+            color: #fff;
+            padding-top: 30px;
+            position: relative;
+            max-width: 100%;
+            text-align: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 640px;
+            height: 580px;
+        }
+
+        .--color {
+            color: #02899C;
+        }
+
+        .card-container .pro {
+            color: #231E39;
+            background-color: #FEBB0B;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 3px 7px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+
+        .card-container .round {
+            border: 1px solid #03BFCB;
+            border-radius: 50%;
+            height: 200px;
+            width: 200px;
+            padding: 7px;
+        }
+        .card-container .buttons{
+            display:flex;
+            justify-content:space-around;
+            flex-wrap:wrap;
+        }
+        button.primary {
+            background-color: #cab5b5;
+            border: 1px solid #02899C;
+            border-radius: 3px;
+            color: #02899C;
+            font-family: Montserrat, sans-serif;
+            font-weight: 500;
+            padding: 10px 25px;
+        }
+
+            button.primary:hover {
+                background-color: #514d47f1;
+                cursor: pointer;
+            }
+
+            button.primary.ghost:hover {
+                background-color: #514d47f1;
+                cursor: pointer;
+            }
+
+            button.primary.ghost {
+                background-color: #cab5b5;
+                color: #02899C;
+            }
+
+        .skills {
+            background-color: #a9a9a9;
+            text-align: left;
+            padding: 15px;
+            width: 100%;
+        }
+
+            .skills ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                .skills ul li {
+                    border: 1px solid #2D2747;
+                    border-radius: 2px;
+                    display: inline-block;
+                    font-size: 12px;
+                    margin: 0 7px 7px 0;
+                    padding: 7px;
+                }
+
+        #profile-card {
+            display: block;
+        }
+
+        
+    </style>
+
+
+</head>
+<body>
+    <div id="profile-card">
+        <main>
+                <div class="wrap-profile">
+                    <div class="card-container">
+                        <div class="left">
+                            <a href="/Home/index" style="font-size:18px;font-weight:500;color:lightgoldenrodyellow;position:absolute;top:5px;right:5px;">X</a>
+                            <span class="pro">PRO</span>
+                            <img class="round" src="@Model.Anh" alt="user" />
+                            <h3>@Model.Fullname</h3>
+                            <ul style="display: flex;justify-content: space-between;margin-left: 20px;">
+                                <li style="display: flex;justify-content: flex-start;margin-right: 60px;">Gender:@Model.Gender</li>
+
+                                <li style="margin-right: 60px;display: flex;justify-content: center;">Age:@Model.Age </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="right">
+                            <ul style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; margin-block-start: 4px; padding-inline-start: 0px;">
+                                <li style="display: flex; justify-content: flex-start; color: wheat; letter-spacing:2px;">Phone:@Model.Phone</li>
+                                <li style="display: flex; margin: 15px 0; justify-content: flex-start; color: wheat; letter-spacing: 2px;">Email:@Model.Email</li>
+                            </ul>
+                            <p>Tôi Tự hào là chính tôi <br />cùng với niềm đam mê bất tận</p>
+                            <div class="buttons">
+                                <button name="Logout" class="primary">
+                                    @Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "--color" })
+                                </button>
+                                <button @*onclick="OpenForm()"*@ name="Update" class="primary --color">
+                                    @Html.ActionLink("Update", "updateProfile", "Home", null, new { @class = "--color" })
+
+                                </button>
+                                <button class="primary ghost" onclick="location.href='@Url.Action("MyBlogs", "Blogs")'">
+                                    My Blogs
+                                </button>
+                                <button style="margin-top:10px" name="appoinment" class="primary" onclick="location.href='@Url.Action("Appointments", "Blogs")'">
+                                    Appoinment
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="skills">
+                        <h6>Course is following</h6>
+                        <ul>
+                            <li></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+          
+        </main>
+    </div>
+
+    <script>
+        function OpenForm() {
+            // Sử dụng [0] để lấy phần tử đầu tiên trong HTMLCollection
+            document.getElementsByClassName('Update-profile')[0].style.display = 'flex';
+            document.getElementById('profile-card').style.display = 'none';
+        }
+
+        function closeForm() {
+            // Sử dụng [0] để lấy phần tử đầu tiên trong HTMLCollection
+            document.getElementsByClassName('Update-profile')[0].style.display = 'none';
+            document.getElementById('profile-card').style.display = 'block';
+        }
+
+    </script>
+
+</body>
+</html>
